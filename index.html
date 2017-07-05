@@ -10,6 +10,8 @@
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="dist/styles/main.css">
+		<!-- FontAwesome Include -->
+		<script src="https://use.fontawesome.com/77d14e2054.js"></script>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -19,7 +21,7 @@
 	</head>
 	<body>
 
-		<div class="pageOverlay hide">
+		<div class="pageOverlay">
 			<h1 class="blinking">Currently in Testing-Only Mode</h1>
 		</div>
 
@@ -31,11 +33,13 @@
 			</div>
 			<div class="change">
 				<div class="col-md-6 weekly">
-                    <h3 class="weekly"><img src="dist/images/up.svg" class="up"><img src="dist/images/down.svg" class="down hide"> <span>0%</span> Weekly</h3>
+                    <h3 class="weekly"><span>0</span> Installed This Week</h3>
+                    <h4 class="weekly"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i><i class="fa fa-arrow-circle-down hide" aria-hidden="true"></i> <span>0%</span> Over the Last 7 Days</h4>
+                    <!-- <h4 class="weekly"><img src="dist/images/up.svg" class="up"><img src="dist/images/down.svg" class="down hide"> <span>0%</span> Over the Last 7 Days</h4> -->
 				</div>
 				<div class="col-md-6 monthly">
-                    <h3 class="monthly"><img src="dist/images/up.svg" class="up"><img src="dist/images/down.svg" class="down hide"> <span>0%</span> Monthly</h3>
-
+                    <h3 class="monthly"><span>0</span> Installed This Month</h3>
+                    <h4 class="monthly"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i><i class="fa fa-arrow-circle-down hide" aria-hidden="true"></i> <span>0%</span> Over the Last 30 Days</h4>
 				</div>
 			</div>
 		</div>
