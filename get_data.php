@@ -39,6 +39,30 @@ foreach ($res as $row)
     $last_30_days = $row[3];
     $prior_30_days = $row[4];
 }
+
+$res = $bq->query("
+#standardSQL
+SELECT
+COUNT(DISTINCT entity_id)
+FROM
+`smart_analytics.transactions_meta_*`
+WHERE
+_TABLE_SUFFIX BETWEEN '".date('Ymd',strtotime('-6 days'))."'
+AND '".date('Ymd')."'
+");
+foreach ($res as $row)
+{
+    $total_installs = $row[0];
+}
+// Get "live" data for the last 10 hours to find any entities that don't exist in the daily receipt deployment and add them into the total installs number
+$res = $bq->query("
+select exact_count_distinct(entity_id) from [ingestion.transactions_02@-3600000--1] where entity_id not in (select id from [smart_analytics.receipt_deployment] )
+");
+foreach ($res as $row)
+{
+    $total_installs += $row[0];
+}
+
 $weekly = round((($last_7_days - $prior_7_days) / $prior_7_days) * 100);
 $monthly = round((($last_30_days - $prior_30_days) / $prior_30_days) * 100);
 echo json_encode(Array(

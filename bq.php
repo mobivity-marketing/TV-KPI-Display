@@ -38,7 +38,7 @@ class Bigquery
     {
         $return_data = Array();
         $this->queryConfig->setQuery($__sql);
-
+        try {
         $res            = $this->service->jobs->insert($this->project_id,$this->job);
         $jr             = $res->getJobReference();
         $jobId          = $jr['jobId'];
@@ -72,6 +72,10 @@ class Bigquery
         }
         while ($pageToken);
         return $return_data;
+        } catch (Google_Service_Exception $e) {
+            return $e->getMessage();
+        }
+
     }
 }
 
